@@ -1,0 +1,13 @@
+{
+  "name": "kwatventure",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --filter @kwatventure/api dev",
+    "dev:components": "pnpm --filter @kwatventure/components dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
