@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
+  "type ": "module",
   "bin": {
     "start": "bin/server.js"
   },
@@ -74,7 +75,8 @@
     "better-sqlite3": "^9.3.0",
     "luxon": "^3.4.4",
     "reflect-metadata": "^0.2.1",
-    "@kwatventure/sdk": "workspace:*"
+    "@kwatventure/sdk": "workspace:*",
+    "kwatventure-system-dnd5e": "workspace:*"
   },
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/app"

@@ -7,7 +7,6 @@ import { HttpContext } from '@adonisjs/core/http'
 export default class PluginsController {
   constructor(systemService: SystemService) {
     console.log('plugins controller')
-    systemService.addSystem()
   }
 
   async getActivePlugins({ response }: HttpContext) {

@@ -3,7 +3,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url' // Import the required function
 import SystemService from '#services/system_service'
-import { type System } from '@kwatventure/sdk'
+import { type System, getSystems } from '@kwatventure/sdk'
+import logger from '@adonisjs/core/services/logger'
 
 export default class SystemProvider {
   constructor(protected app: ApplicationService) {}
@@ -11,31 +12,25 @@ export default class SystemProvider {
   /**
    * Register bindings to the container
    */
-  register() {
-    let systems: System[] = []
+  async register() {
+    let systemNames: string[] = []
 
-    fs.readdir('./systems', async (err, files) => {
-      if (err) {
-        console.error('Error reading systems directory', err)
-        return
+    const data = fs.readFileSync('./package.json', 'utf-8')
+    const jsonData = JSON.parse(data)
+
+    //get dependencies from package.json starting with kwatventure-system
+    for (let dependecy in jsonData.dependencies) {
+      if (dependecy.startsWith('kwatventure-system')) {
+        systemNames.push(dependecy)
       }
+    }
+    console.log('Found the following extensions:', systemNames)
 
-      //if file is a directory
-      for (let file of files) {
-        let filePath = path.resolve(process.cwd(), 'systems', file)
+    let systems: System[] = await getSystems(systemNames)
+    console.log('Imported systems:', systems)
 
-        if (fs.lstatSync(path.resolve(filePath)).isDirectory()) {
-          // import the index.ts file in it
-          let system = await import(pathToFileURL(path.resolve(filePath, 'system.js')).href)
-          systems.push(system)
-        }
-      }
-
-      console.log('systems', systems)
-
-      this.app.container.singleton(SystemService, () => {
-        return new SystemService(systems)
-      })
+    this.app.container.singleton(SystemService, () => {
+      return new SystemService(systems)
     })
   }
 
