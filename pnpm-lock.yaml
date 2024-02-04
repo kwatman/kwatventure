@@ -24,13 +24,16 @@ importers:
         version: 20.1.0(@adonisjs/assembler@7.1.1)(@adonisjs/core@6.2.2)(better-sqlite3@9.3.0)(luxon@3.4.4)
       '@kwatventure/sdk':
         specifier: workspace:*
-        version: link:../sdk
+        version: link:../packages/sdk
       '@vinejs/vine':
         specifier: ^1.7.1
         version: 1.7.1
       better-sqlite3:
         specifier: ^9.3.0
         version: 9.3.0
+      kwatventure-system-dnd5e:
+        specifier: workspace:*
+        version: link:../systems/dnd
       luxon:
         specifier: ^3.4.4
         version: 3.4.4
@@ -142,7 +145,7 @@ importers:
         specifier: ^1.8.25
         version: 1.8.27(typescript@5.3.3)
 
-  sdk:
+  packages/sdk:
     devDependencies:
       '@types/node':
         specifier: ^20.11.16
@@ -159,6 +162,12 @@ importers:
       vite-plugin-dts:
         specifier: ^3.7.2
         version: 3.7.2(@types/node@20.11.16)(typescript@5.3.3)(vite@5.0.11)
+
+  systems/dnd:
+    devDependencies:
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
 
 packages:
 
@@ -1742,7 +1751,7 @@ packages:
   /@types/fs-extra@9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 18.19.4
+      '@types/node': 20.11.16
     dev: true
 
   /@types/he@1.2.3:
@@ -1794,12 +1803,12 @@ packages:
     resolution: {integrity: sha512-rZEfe/hJSGYmdfX9tvcPMYeYPW2sNl50nsw4jZmRcaG0HIAb0WYEpsB05GOb53vjqpyE9GUhlDQ4jLSoB5q9kg==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
 
   /@types/node@20.11.16:
     resolution: {integrity: sha512-gKb0enTmRCzXSSUJDq6/sPcqrfCv2mkkG6Jt/clpn5eiCbKTY+SgZUxo+p8ZKMof5dCp9vHQUAB7wOUTod22wQ==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1819,7 +1828,7 @@ packages:
     resolution: {integrity: sha512-mEafCgyKiMFin24SDzWN7yAADt4gt6YawFiNMp0QS5ZPboORfyxFt0s3VzJKhTaKg9py/4FUmrHLTNfJKt9Rbw==}
     dependencies:
       '@types/cookiejar': 2.1.5
-      '@types/node': 20.11.10
+      '@types/node': 20.11.16
 
   /@types/validator@13.11.8:
     resolution: {integrity: sha512-c/hzNDBh7eRF+KbCf+OoZxKbnkpaK/cKp9iLQWqB7muXtM+MtL9SUUH8vCFcLn6dH1Qm05jiexK0ofWY7TfOhQ==}
